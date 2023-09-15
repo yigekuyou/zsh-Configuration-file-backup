@@ -26,12 +26,12 @@ autoload -Uz _zinit
 
 # Load a few important annexes, without Turbo
 zinit snippet OMZ::plugins/per-directory-history/per-directory-history.zsh
-zinit snippet OMZ::plugins/rand-quote/rand-quote.plugin.zsh
+zinit snippet OMZ::plugins/hitokoto/hitokoto.plugin.zsh
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
 # (this is currently required for annexes)
-quote=($(quote))
+quote=($(hitokoto))
 zinit light-mode for \
     light-mode \
   zsh-users/zsh-autosuggestions \
