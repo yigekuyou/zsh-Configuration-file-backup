@@ -31,7 +31,7 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
 # (this is currently required for annexes)
-quote=($(hitokoto))
+quote=($(hitokoto|sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"))
 zinit light-mode for \
     light-mode \
   zsh-users/zsh-autosuggestions \

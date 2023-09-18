@@ -37,7 +37,7 @@
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
-    example
+    quotewords
     # =========================[ Line #3 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -97,24 +97,25 @@
     vim_shell               # vim shell indicator (:sh)
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
-    # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
-    # vpn_ip                # virtual private network indicator
-    # load                  # CPU load
-    # disk_usage            # disk usage
-    # ram                   # free RAM
-    # swap                  # used swap
+    vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
+    vpn_ip                # virtual private network indicator
+    load                  # CPU load
+    disk_usage            # disk usage
+    ram                   # free RAM
+    swap                  # used swap
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-    # cpu_arch              # CPU architecture
+    cpu_arch              # CPU architecture
     time                    # current time
     # =========================[ Line #2 ]=========================
     newline
-    #ip                     # ip address and bandwidth usage for a specified network interface
-    #public_ip              # public IP address
-    #proxy                  # system-wide http/https/ftp proxy
-    #battery                # internal battery
-    #wifi                   # wifi speed
+    quotehead
+    ip                     # ip address and bandwidth usage for a specified network interface
+    public_ip              # public IP address
+    proxy                  # system-wide http/https/ftp proxy
+    battery                # internal battery
+    wifi                   # wifi speed
     #example                # example user-defined segment (see prompt_example function below)
   )
 
@@ -1697,10 +1698,12 @@
   # greeting the user.
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
-  function prompt_example() {
-   p10k segment -t "$quote" -b 232
+  function prompt_quotehead() {
+   p10k segment -t "${quote[(w)1]/:}"  -f '#0000ff' -b '#fed3c1'
   }
-
+  function prompt_quotewords() {
+    p10k segment -t "${${quote[(w)2]//\”}//\“}" -f '#272727' -b '#f2ebef'
+  }
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
   # https://github.com/romkatv/powerlevel10k/blob/master/README.md#instant-prompt.
@@ -1713,13 +1716,15 @@
   #
   # Usually, you should either not define instant_prompt_* or simply call prompt_* from it. If
   # instant_prompt_* is not defined for a segment, the segment won't be shown in instant prompt.
-  function instant_prompt_example() {
+  function instant_prompt_quotehead() {
     # Since prompt_example always makes the same `p10k segment` calls, we can call it from
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
-    prompt_example
+    prompt_quotehead
   }
-
+  function instant_prompt_quotewords(){
+    prompt_quotewords
+  }
   # User-defined prompt segments can be customized the same way as built-in segments.
   #typeset -g POWERLEVEL9K_EXAMPLE_FOREGROUND=3
   #typeset -g POWERLEVEL9K_EXAMPLE_BACKGROUND=1
