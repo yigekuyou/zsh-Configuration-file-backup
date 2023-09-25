@@ -9,6 +9,7 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+source /etc/zsh_command_not_found
 # Created by newuser for 5.9
 ### Added by Zinit's installer
 unsetopt prompt_cr prompt_sp
@@ -31,7 +32,8 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
 # (this is currently required for annexes)
-quote=($(hitokoto|sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"))
+alias hitokoto='hitokoto|sed -r -e "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" -e "s/[[:space:]]//g"'
+alias quote='quote=($(hitokoto))'
 zinit light-mode for \
     light-mode \
   zsh-users/zsh-autosuggestions \
@@ -48,3 +50,4 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 ZLE_RPROMPT_INDENT=0
+quote
