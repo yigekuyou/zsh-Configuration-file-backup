@@ -9,7 +9,9 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+fi [[ -r "/etc/zsh_command_not_found" ]]; then
 source /etc/zsh_command_not_found
+if
 # Created by newuser for 5.9
 ### Added by Zinit's installer
 unsetopt prompt_cr prompt_sp
