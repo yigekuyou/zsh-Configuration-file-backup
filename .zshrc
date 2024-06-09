@@ -4,6 +4,7 @@
 if [ "$TERM" = linux ] ; then
     unset LANG
 fi
+[[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
 ##export http_proxy=127.0.0.1:17200
 ##export https_proxy=127.0.0.1:17200
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
