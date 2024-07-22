@@ -1699,10 +1699,10 @@
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_quotehead() {
-   p10k segment -t "${quote%%:*}"  -f '#0000ff' -b '#fed3c1'
+   p10k segment -t "${quote%%':“'*}"  -f '#0000ff' -b '#fed3c1'
   }
   function prompt_quotewords() {
-    p10k segment -t "${${${quote#**:}//\”}//\“}" -f '#272727' -b '#f2ebef'
+    p10k segment -t "${${quote#**':“'}%'”'*}" -f '#272727' -b '#f2ebef'
   }
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
