@@ -34,9 +34,6 @@ zinit ice wait'2'
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
 zinit ice wait'2'
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit ice has'eza'
-zinit light z-shell/zsh-eza
 # (this is currently required for annexes)
 alias hitokoto='hitokoto|sed -r -e "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" -e "s/[[:space:]]//g"'
 alias quote='quote=($(hitokoto))'
@@ -50,7 +47,8 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
+zinit ice has'eza'
+zinit light z-shell/zsh-eza
 
 ### End of Zinit's installer chunk
 zinit ice depth=1; zinit light romkatv/powerlevel10k
