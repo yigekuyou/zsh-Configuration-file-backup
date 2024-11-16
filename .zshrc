@@ -29,11 +29,14 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
-zinit snippet OMZ::plugins/per-directory-history/per-directory-history.zsh
 zinit snippet OMZ::plugins/hitokoto/hitokoto.plugin.zsh
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice wait'2'
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
+zinit ice wait'2'
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice has'eza'
+zinit light z-shell/zsh-eza
 # (this is currently required for annexes)
 alias hitokoto='hitokoto|sed -r -e "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" -e "s/[[:space:]]//g"'
 alias quote='quote=($(hitokoto))'
@@ -48,11 +51,15 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
+
 ### End of Zinit's installer chunk
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 ZLE_RPROMPT_INDENT=0
-quote
+
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=#000000,bold,underline"
+
+# Created by `pipx` on 2024-09-19 14:52:05
+export PATH="$PATH:/home/light/.local/bin"
+quote
