@@ -246,10 +246,11 @@ os = "linux"
 
 [env_var.quote]
 style = "#fed3c1"
+variable = 'quote'
 format = "[$env_value]($style)"
 [env_var.quotefrom]
-style = "#f2ebef"
-format = "[$env_value]($style)"
+style = "#009933"
+format = "[ from ](#767676)[$env_value]($style)"
 [env_var.quoteauthor]
 style = "#f2ebef"
-format = "[$env_value]($style)"
+format = "[ $env_value]($style)"
