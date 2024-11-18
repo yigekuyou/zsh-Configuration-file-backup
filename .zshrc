@@ -10,9 +10,6 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-if [[ -r "/etc/zsh_command_not_found" ]]; then
-source /etc/zsh_command_not_found
-fi
 # Created by newuser for 5.9
 ### Added by Zinit's installer
 unsetopt prompt_cr prompt_sp
@@ -29,14 +26,19 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
-zinit snippet OMZ::plugins/hitokoto/hitokoto.plugin.zsh
-zinit ice wait'2'
+zinit ice wait
+zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
+zinit ice wait
+zinit snippet OMZ::plugins/suse/suse.plugin.zsh
+zinit ice wait
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zinit ice wait
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
-zinit ice wait'2'
+zinit ice wait
+zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
+zinit ice wait
 # (this is currently required for annexes)
-alias hitokoto='hitokoto|sed -r -e "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" -e "s/[[:space:]]//g"'
-alias quote='quote=($(hitokoto))'
+
 zinit light-mode for \
     light-mode \
   zsh-users/zsh-autosuggestions \
@@ -47,17 +49,25 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-zinit ice has'eza'
+zinit ice has'lsd' wait
+zinit light z-shell/zsh-lsd
+zinit ice has'eza' wait
 zinit light z-shell/zsh-eza
+zinit ice has'starship' id-as'starship' run-atpull \
+atclone"starship init zsh > starship.zsh;starship completions zsh > _starship" \
+atpull"%atclone" src"starship.zsh" \
+atinit'export STARSHIP_CONFIG=~/.starship.toml'
+zinit light zdharma-continuum/null
+zinit ice has'jq' has"curl" \
+atinit'local -a data; data=("${(ps:\n:)"$(command curl -s --connect-timeout 2 "https://v1.hitokoto.cn" | command jq -r ".hitokoto,.from,.from_who" )"}");
+[[  ${data[1]} != null ]]&&declare -x quote="${data[1]}";[[  ${data[2]} != null ]]&&declare -x quotefrom="${data[2]}";[[  ${data[3]} != null ]]&&[[  ${data[3]} != ${data[2]} ]]&&declare -x quoteauthor="${data[3]}"'
+zinit light zdharma-continuum/null
+# zinit snippet https://github.com/InfinityUniverse0/light-zsh/blob/main/light-zsh.zsh-theme
 
 ### End of Zinit's installer chunk
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 ZLE_RPROMPT_INDENT=0
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# Created by `pipx` on 2024-09-19 14:52:05
-export PATH="$PATH:/home/light/.local/bin"
-quote
+

@@ -1,0 +1,255 @@
+format = """
+[╭─](white)$os$sudo$username$hostname $directory$package$java$python$git_branch$git_commit$git_state \
+$fill\
+$jobs$status$cmd_duration$kubernetes$python$aws$nodejs$docker_context$golang${custom.loadavg-linux}${custom.disk-linux}$memory_usage$battery$time
+[|](white)${env_var.quote} \
+$fill\
+${env_var.quoteauthor}${env_var.quotefrom}
+[╰─](white)$character
+"""
+
+# move the rest of the prompt to the right
+right_format = """${env_var.https_proxy}"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+# Disable the blank line at the start of the prompt
+ add_newline = false
+
+# A minimal left prompt
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+
+[fill]
+symbol = '-'
+style = 'bold blue'
+
+[username]
+show_always = true
+style_root = "bold red"
+style_user = "bold yellow"
+format = "[$user]($style)@"
+disabled = false
+[sudo]
+disabled = false
+format = "[$symbol]($style)"
+# Hostname settings
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold red)"
+trim_at = ".companyname.com"
+disabled = false
+
+# Directory indicator
+[directory]
+read_only = "🔒"
+style = "bold cyan"
+read_only_style = "red"
+truncation_length = 8
+truncation_symbol = "…/"
+format = "[$read_only]($read_only_style)[$path]($style) "
+disabled = false
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" =""
+"Downloads" =""
+"Music" =""
+"Pictures" =""
+
+[status]
+disabled = false
+format = "[ $signal_name $symbol ]($style)"
+map_symbol = true
+sigint_symbol = "[✘]($style)"
+success_symbol = "[✔]($style)"
+symbol = "[✘]($style)"
+
+[git_branch]
+style = "#d8712c"
+format = "( $style)[ $symbol$branch]( $style)"
+
+[git_commit]
+style = "#d8712c"
+format = "\b[ ]($style)[\\($hash$tag\\)]( $style)"
+
+[git_state]
+style = "#d8712c"
+format = "\b[ ]($style)[ \\($state( $progress_current/$progress_total)\\)]( $style)"
+
+[git_status]
+style = "#d8712c"
+format = "(\b[ ]($style )$conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind)"
+conflicted = "[ ](bold  #d8712c)[  ${count} ]( #d8712c)"
+staged = "[ $count ]( #d8712c)"
+modified = "[ ${count} ]( #d8712c)"
+renamed = "[ ${count} ]( #d8712c)"
+deleted = "[ ${count} ]( #d8712c)"
+untracked = "[?${count} ]( #d8712c)"
+stashed = "[ ${count} ]( #d8712c)"
+ahead = "[ ${count} ](#d8712c)"
+behind = "[ ${count} ]( #d8712c)"
+diverged = "[ ]( #d8712c)[ נּ ]( #d8712c)[ ${ahead_count} ]( #d8712c)[ ${behind_count} ]( #d8712c)"
+
+
+[buf]
+symbol =""
+
+[c]
+symbol =""
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol =""
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol =""
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[ocaml]
+symbol =""
+
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = ""
+style = "#5f8787"
+format = "([  ](#767676)[$ram_pct $symbol]($style))"
+
+
+[shlvl]
+disabled = true
+
+[os]
+disabled = false
+format = "[ ](#767676)[$symbol]($style) ($style)"
+
+
+[os.symbols]
+Alpaquita =""
+Alpine =""
+AlmaLinux =""
+Amazon =""
+Android =""
+Arch =""
+Artix =""
+CentOS =""
+Debian =""
+DragonFly =""
+Emscripten =""
+EndeavourOS =""
+Fedora =""
+FreeBSD =""
+Garuda ="󰛓"
+Gentoo =""
+HardenedBSD ="󰞌"
+Illumos ="󰈸"
+Kali =""
+Linux =""
+Mabox =""
+Macos =""
+Manjaro =""
+Mariner =""
+MidnightBSD =""
+Mint =""
+NetBSD =""
+NixOS =""
+OpenBSD ="󰈺"
+openSUSE =""
+OracleLinux ="󰌷"
+Pop =""
+Raspbian =""
+Redhat =""
+RedHatEnterprise =""
+RockyLinux =""
+Redox ="󰀘"
+Solus ="󰠳"
+SUSE =""
+Ubuntu =""
+Unknown =""
+Void =""
+Windows ="󰍲"
+
+[package]
+symbol ="󰏗"
+
+[perl]
+symbol =""
+
+[php]
+symbol =""
+
+[pijul_channel]
+symbol =""
+
+[python]
+symbol =""
+
+[rlang]
+symbol ="󰟔"
+
+[ruby]
+symbol =""
+
+[rust]
+symbol ="󱘗"
+
+[scala]
+symbol =""
+
+[swift]
+symbol =""
+
+[zig]
+symbol =""
+
+[gradle]
+symbol =""
+
+[time]
+disabled = false
+time_format = '%a %h %-e %-l:%M %p'
+use_12hr = true
+style = 'bold green'
+format = '[ ♥ $time ]($style)'
+[battery]
+full_symbol = "• "
+charging_symbol = "⇡ "
+discharging_symbol = "⇣ "
+format = '[  ](#767676)[$symbol$percentage]($style) '
+[[battery.display]]
+threshold = 100
+
+[custom.disk-linux]
+description = "Show disk used"
+command = 'df -h --output=avail "$PWD" | tail -n 1'
+style = "#00af5f"
+format = "[  ](#767676)[$output ]($style)"
+when = "true"
+os = "linux"
+
+
+[custom.loadavg-linux]
+description = "Show load average"
+command = "cat /proc/loadavg | cut -d' ' -f 2"
+style = "#5f8787"
+format = "([  ](#767676)[$output ]($style))"
+when = "true"
+os = "linux"
+
+[env_var.quote]
+style = "#fed3c1"
+format = "[$env_value]($style)"
+[env_var.quotefrom]
+style = "#f2ebef"
+format = "[$env_value]($style)"
+[env_var.quoteauthor]
+style = "#f2ebef"
+format = "[$env_value]($style)"
