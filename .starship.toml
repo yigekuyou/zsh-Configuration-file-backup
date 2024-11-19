@@ -4,12 +4,12 @@ $fill\
 $jobs$status$cmd_duration$kubernetes$python$aws$nodejs$docker_context$golang${custom.loadavg-linux}${custom.disk-linux}$memory_usage$battery$time[─╮](white)
 [├─](white)${env_var.quote} \
 $fill\
-${env_var.quoteauthor}${env_var.quotefrom}[─┤](white)[  ](white)
+${env_var.quoteauthor}${env_var.quotefrom}[─┤](white)
 [╰─](white)$character
 """
 
 # move the rest of the prompt to the right
-right_format = """${env_var.https_proxy}[─╯](white)[  ](white)"""
+right_format = """${env_var.https_proxy}[─╯](white)"""
 
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
