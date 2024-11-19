@@ -30,9 +30,9 @@ zinit ice has'termux-setup-storage'
 zinit load zpm-zsh/termux
 zinit ice wait
 zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
-zinit ice wait
+zinit ice wait has'zypper'
 zinit snippet OMZ::plugins/suse/suse.plugin.zsh
-zinit ice wait
+zinit ice wait has'sudo'
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit ice wait
 zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
