@@ -219,7 +219,7 @@ symbol =""
 
 [time]
 disabled = false
-# time_format = '%a %h %-e %-l:%M %p'
+time_format = '%a %h %-e %-l:%M %p'
 use_12hr = true
 style = 'bold green'
 format = '[ ♥ $time]($style)'
