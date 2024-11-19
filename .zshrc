@@ -26,6 +26,8 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
+zinit ice has'termux-setup-storage'
+zinit load zpm-zsh/termux
 zinit ice wait
 zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
 zinit ice wait
@@ -49,8 +51,12 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
+
 zinit ice has'lsd' wait
 zinit light z-shell/zsh-lsd
+zinit ice has'jq' has'curl' wait \
+atinit'export ZSH_ASK_API_URL=localhost:30000/v1/chat/completions;export ZSH_ASK_API_KEY=verbose;export ZSH_ASK_REPO=""'
+zinit light Licheam/zsh-ask
 zinit ice has'eza' wait
 zinit light z-shell/zsh-eza
 zinit ice has'starship' id-as'starship' run-atpull \
@@ -62,12 +68,14 @@ zinit ice has'jq' has"curl" \
 atinit'local -a data; data=("${(ps:\n:)"$(command curl -s --connect-timeout 2 "https://v1.hitokoto.cn" | command jq -r ".hitokoto,.from,.from_who" )"}");
 [[  ${data[1]} != null ]]&&declare -x quote="${data[1]}";[[  ${data[2]} != null ]]&&declare -x quotefrom="${data[2]}";[[  ${data[3]} != null ]]&&[[  ${data[3]} != ${data[2]} ]]&&declare -x quoteauthor="${data[3]}"'
 zinit light zdharma-continuum/null
+zinit snippet https://github.com/victoria-riley-barnett/Communism/blob/main/Communism.plugin.zsh
+
 # zinit snippet https://github.com/InfinityUniverse0/light-zsh/blob/main/light-zsh.zsh-theme
 
 ### End of Zinit's installer chunk
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 ZLE_RPROMPT_INDENT=0
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=( completion)
 
 

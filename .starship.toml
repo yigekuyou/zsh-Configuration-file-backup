@@ -98,27 +98,6 @@ behind = "[ ${count} ]( #d8712c)"
 diverged = "[ ]( #d8712c)[ נּ ]( #d8712c)[ ${ahead_count} ]( #d8712c)[ ${behind_count} ]( #d8712c)"
 
 
-[buf]
-symbol =""
-
-[c]
-symbol =""
-style ="#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol =""
-style ="#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol =""
-style ="#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[ocaml]
-symbol =""
-
 
 [memory_usage]
 disabled = false
@@ -181,41 +160,7 @@ Unknown =""
 Void =""
 Windows ="󰍲"
 
-[package]
-symbol ="󰏗"
 
-[perl]
-symbol =""
-
-[php]
-symbol =""
-
-[pijul_channel]
-symbol =""
-
-[python]
-symbol =""
-
-[rlang]
-symbol ="󰟔"
-
-[ruby]
-symbol =""
-
-[rust]
-symbol ="󱘗"
-
-[scala]
-symbol =""
-
-[swift]
-symbol =""
-
-[zig]
-symbol =""
-
-[gradle]
-symbol =""
 
 [time]
 disabled = false
@@ -261,3 +206,189 @@ format = "[ from ](#767676)[$env_value]($style)"
 description = "quoteauthor"
 style = "#f2ebef"
 format = "[ $env_value]($style)"
+# # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # #
+[aws]
+symbol = "  "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[buf]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[c]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[conda]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[crystal]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[dart]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[elixir]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[fennel]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[fossil_branch]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[golang]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[guix_shell]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[haxe]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[hg_branch]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[kotlin]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[lua]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[meson]
+symbol = "󰔷 "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nix_shell]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[ocaml]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[package]
+symbol = "󰏗 "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[perl]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[php]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[pijul_channel]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[rlang]
+symbol = "󰟔 "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[ruby]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = "󱘗 "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[swift]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[zig]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+symbol = " "
+style ="#86BBD8"
+format = '[ $symbol ($version) ]($style)'
