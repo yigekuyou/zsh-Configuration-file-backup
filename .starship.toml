@@ -1,6 +1,6 @@
 format = """
 [╭─](white)$os$sudo$username$hostname$directory$all$package$java$python$git_branch$git_commit$git_state\
-$fill\
+$fill[\t\b]()\
 $jobs$status$cmd_duration$kubernetes$python$aws$nodejs$docker_context$golang${custom.loadavg-linux}${custom.disk-linux}$memory_usage$battery$time[\t\b─╮](white)
 [├─](white)${env_var.quote} \
 $fill\
