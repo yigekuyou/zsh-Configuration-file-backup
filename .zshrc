@@ -46,7 +46,6 @@ zinit light-mode for \
   zsh-users/zsh-autosuggestions \
     light-mode \
   zdharma-continuum/fast-syntax-highlighting \
-  zdharma-continuum/history-search-multi-word \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
@@ -70,8 +69,7 @@ atinit'local -a data; data=("${(ps:\n:)"$(command curl -s --connect-timeout 2 "h
 [[  ${data[1]} != null ]]&&declare -x quote="${data[1]}";[[  ${data[2]} != null ]]&&declare -x quotefrom="${data[2]}";[[  ${data[3]} != null ]]&&[[  ${data[3]} != ${data[2]} ]]&&declare -x quoteauthor="${data[3]}"'
 zinit light zdharma-continuum/null
 zinit load victoria-riley-barnett/Communism
-zinit ice has'sqlite3' \
-src"sqlite-history.zsh"
+zinit ice has'sqlite3'
 zinit light larkery/zsh-histdb
 
 ### End of Zinit's installer chunk
