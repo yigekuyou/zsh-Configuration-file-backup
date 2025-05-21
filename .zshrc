@@ -62,14 +62,16 @@ zinit ice has'starship' id-as'starship' \
 atclone"starship init zsh > starship.zsh;starship completions zsh > _starship" \
 atpull'%atclone' \
 src"starship.zsh" \
-atinit'export STARSHIP_CONFIG=~/.starship.toml'
+atinit'unset HISTFILE;export STARSHIP_CONFIG=~/.starship.toml'
 zinit light zdharma-continuum/null
 zinit ice has'jq' has"curl" \
 atinit'local -a data; data=("${(ps:\n:)"$(command curl -s --connect-timeout 2 "https://v1.hitokoto.cn" | command jq -r ".hitokoto,.from,.from_who" )"}");
 [[  ${data[1]} != null ]]&&declare -x quote="${data[1]}";[[  ${data[2]} != null ]]&&declare -x quotefrom="${data[2]}";[[  ${data[3]} != null ]]&&[[  ${data[3]} != ${data[2]} ]]&&declare -x quoteauthor="${data[3]}"'
 zinit light zdharma-continuum/null
 zinit load victoria-riley-barnett/Communism
-zinit ice has'sqlite3'
+zinit ice has'sqlite3' \
+src"histdb-interactive.zsh" \
+atload"bindkey '^r' _histdb-isearch"
 zinit light larkery/zsh-histdb
 
 ### End of Zinit's installer chunk
