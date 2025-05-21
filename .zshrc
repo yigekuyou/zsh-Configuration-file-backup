@@ -59,18 +59,20 @@ atinit'export ZSH_ASK_API_URL=localhost:30000/v1/chat/completions;export ZSH_ASK
 zinit light Licheam/zsh-ask
 zinit ice has'eza' wait
 zinit light z-shell/zsh-eza
-zinit ice has'starship' id-as'starship' run-atpull \
+zinit ice has'starship' id-as'starship' \
 atclone"starship init zsh > starship.zsh;starship completions zsh > _starship" \
-atpull"%atclone" src"starship.zsh" \
+atpull'%atclone' \
+src"starship.zsh" \
 atinit'export STARSHIP_CONFIG=~/.starship.toml'
 zinit light zdharma-continuum/null
 zinit ice has'jq' has"curl" \
 atinit'local -a data; data=("${(ps:\n:)"$(command curl -s --connect-timeout 2 "https://v1.hitokoto.cn" | command jq -r ".hitokoto,.from,.from_who" )"}");
 [[  ${data[1]} != null ]]&&declare -x quote="${data[1]}";[[  ${data[2]} != null ]]&&declare -x quotefrom="${data[2]}";[[  ${data[3]} != null ]]&&[[  ${data[3]} != ${data[2]} ]]&&declare -x quoteauthor="${data[3]}"'
 zinit light zdharma-continuum/null
-zinit snippet https://github.com/victoria-riley-barnett/Communism/blob/main/Communism.plugin.zsh
-
-# zinit snippet https://github.com/InfinityUniverse0/light-zsh/blob/main/light-zsh.zsh-theme
+zinit load victoria-riley-barnett/Communism
+zinit ice has'sqlite3' \
+src"sqlite-history.zsh"
+zinit light larkery/zsh-histdb
 
 ### End of Zinit's installer chunk
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
